@@ -59,15 +59,15 @@
                 <ul class="space-y-2">
                     <li>
                         <a href="{{ route('dashboard') }}" class="flex items-center gap-3 px-4 py-3 font-medium text-[1.1rem] transition text-black hover:bg-blue-50 whitespace-nowrap">
-                            <svg class="w-6 h-6 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path d="M3 10.5 12 3l9 7.5V19a2 2 0 0 1-2 2h-3.5a.5.5 0 0 1-.5-.5V15a1 1 0 0 0-1-1h-2a1 1 0 0 0-1 1v5.5a.5.5 0 0 1-.5.5H5a2 2 0 0 1-2-2V10.5z"/>
+                            <svg class="w-6 h-6 flex-shrink-0" fill="black" viewBox="0 0 24 24">
+                                <path d="M3 10.5L12 3l9 7.5V19a2 2 0 0 1-2 2h-3.5a.5.5 0 0 1-.5-.5V15a1 1 0 0 0-1-1h-2a1 1 0 0 0-1 1v5.5a.5.5 0 0 1-.5.5H5a2 2 0 0 1-2-2V10.5z"/>
                             </svg>
                             <span x-show="sidebarOpen" class="text-[1.1rem] font-medium whitespace-nowrap" x-transition>Dashboard</span>
                         </a>
                     </li>
                     <li x-data="{ open: {{ request()->routeIs('spph.*') ? 'true' : 'false' }} }">
                         <button @click="open = !open"
-                            class="flex items-center gap-3 px-4 py-3 rounded-xl font-medium text-[1.1rem] transition text-black hover:bg-blue-50 whitespace-nowrap w-full focus:outline-none">
+                            class="flex items-center gap-3 px-4 py-3 font-medium text-[1.1rem] transition text-black hover:bg-blue-50 whitespace-nowrap w-full focus:outline-none">
                             <svg class="w-6 h-6 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <rect x="3" y="3" width="7" height="7" stroke-width="2" rx="1"/>
                                 <rect x="14" y="3" width="7" height="7" stroke-width="2" rx="1"/>
@@ -81,19 +81,23 @@
                         </button>
                         <ul x-show="open" x-transition class="ml-10 mt-2 space-y-1" x-cloak>
                             <li>
-                                <a href="{{ route('spph.create') }}" class="flex items-center gap-2 px-4 py-2 rounded hover:bg-blue-100 text-sm">
-                                    <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path d="M12 4v16m8-8H4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                    </svg>
+                                <a href="{{ route('spph.create') }}" class="flex items-center gap-2 px-4 py-2 hover:bg-blue-100 text-sm">
+                                    <span x-show="sidebarOpen" x-transition>
+                                        <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path d="M12 4v16m8-8H4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </span>
                                     <span x-show="sidebarOpen" x-transition>Buat SPPH</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ route('spph.overview') }}" class="flex items-center gap-2 px-4 py-2 rounded hover:bg-blue-100 text-sm">
-                                    <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <circle cx="12" cy="12" r="10" stroke-width="2"/>
-                                        <path d="M8 12h8M12 8v8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                    </svg>
+                                <a href="{{ route('spph.overview') }}" class="flex items-center gap-2 px-4 py-2 hover:bg-blue-100 text-sm">
+                                    <span x-show="sidebarOpen" x-transition>
+                                        <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <circle cx="12" cy="12" r="10" stroke-width="2"/>
+                                            <path d="M8 12h8M12 8v8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </span>
                                     <span x-show="sidebarOpen" x-transition>Overview SPPH</span>
                                 </a>
                             </li>

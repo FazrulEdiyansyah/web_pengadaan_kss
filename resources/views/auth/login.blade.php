@@ -4,7 +4,7 @@
 <div class="flex items-center justify-center min-h-screen" style="background-color: #00a0d2;">
     <div class="w-full max-w-md p-8 space-y-6 bg-white shadow" style="border-radius: 1rem;">
         <div class="flex flex-col items-center mb-6">
-            <img src="{{ asset('build/assets/logo_kss.png') }}" alt="Logo KSS" class="w-32 mb-4">
+            <img src="{{ asset('build/assets/logo_kss.png') }}" alt="Logo KSS" class="w-41 mb-5">
         </div>
         @if(session('error'))
             <div class="text-red-600 text-sm mb-4">
