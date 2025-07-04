@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\SpphController;
 use App\Http\Controllers\KategoriPenyetujuController;
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\ApprovalController;
 
 Route::get('/', function () {
     return redirect()->route('login');
@@ -23,9 +25,7 @@ Route::get('/register', function () {
 Route::post('/register', [RegisterController::class, 'register'])->name('register.post');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard.index');
-    })->name('dashboard');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     Route::post('/logout', function () {
         Auth::logout();
@@ -41,4 +41,28 @@ Route::middleware('auth')->group(function () {
     Route::get('/sph/overview', function () {
         return view('sph.overview');
     })->name('sph.overview');
+});
+
+// Admin Routes
+Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->group(function () {
+    Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+    
+    // Approver Management
+    Route::get('/approver-management', [AdminController::class, 'approverManagement'])->name('approver.management');
+    Route::post('/make-approver', [AdminController::class, 'makeApprover'])->name('make.approver');
+    Route::post('/remove-approver', [AdminController::class, 'removeApprover'])->name('remove.approver');
+    
+    // Vendor Management
+    Route::get('/vendor-management', [AdminController::class, 'vendorManagement'])->name('vendor.management');
+    Route::post('/vendor', [AdminController::class, 'storeVendor'])->name('vendor.store');
+    Route::put('/vendor/{id}', [AdminController::class, 'updateVendor'])->name('vendor.update');
+    Route::delete('/vendor/{id}', [AdminController::class, 'deleteVendor'])->name('vendor.delete');
+});
+
+// Approver Routes
+Route::middleware(['auth', 'role:approver'])->prefix('approval')->name('approval.')->group(function () {
+    Route::get('/', [ApprovalController::class, 'index'])->name('index');
+    Route::get('/{id}', [ApprovalController::class, 'show'])->name('show');
+    Route::post('/{id}/approve', [ApprovalController::class, 'approve'])->name('approve');
+    Route::post('/{id}/reject', [ApprovalController::class, 'reject'])->name('reject');
 });

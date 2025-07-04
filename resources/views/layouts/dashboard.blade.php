@@ -131,6 +131,16 @@
                             </li>
                         </ul>
                     </li>
+                    @if(auth()->user()->role === 'approver')
+                    <li>
+                        <a href="{{ route('approval.index') }}" class="flex items-center gap-3 px-4 py-3 font-medium text-[1.1rem] transition text-black hover:bg-blue-50 whitespace-nowrap">
+                            <svg class="w-6 h-6 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <span x-show="sidebarOpen" class="text-[1.1rem] font-medium whitespace-nowrap" x-transition>Approval SPPH</span>
+                        </a>
+                    </li>
+                    @endif
                     <li>
                         <a href="#" class="flex items-center gap-3 px-4 py-3 font-medium text-[1.1rem] transition text-black hover:bg-blue-50 whitespace-nowrap">
                             <svg class="w-6 h-6 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">

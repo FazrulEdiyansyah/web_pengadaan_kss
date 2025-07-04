@@ -13,7 +13,7 @@ class Spph extends Model
     // Tambahkan relasi vendor
     public function vendor()
     {
-        return $this->belongsTo(User::class, 'vendor_id');
+        return $this->belongsTo(Vendor::class, 'vendor_id');
     }
 
     // Tambahkan relasi penyetuju
