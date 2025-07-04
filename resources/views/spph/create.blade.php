@@ -81,14 +81,18 @@
                     <label class="block text-sm font-semibold mb-1" for="vendor">Pilih Vendor</label>
                     <select id="vendor" name="vendor" class="w-full px-2 py-1 border border-gray-300 rounded text-sm focus:outline-none">
                         <option value="">Pilihan Vendor</option>
-                        <option value="1">Vendor Dummy</option>
+                        @foreach($vendors as $vendor)
+                            <option value="{{ $vendor->id }}">{{ $vendor->nama_vendor }}</option>
+                        @endforeach
                     </select>
                 </div>
                 <div>
-                    <label class="block text-sm font-semibold mb-1" for="penyetuju">Pilih Penyetuju</label>
-                    <select id="penyetuju" name="penyetuju" class="w-full px-2 py-1 border border-gray-300 rounded text-sm focus:outline-none">
-                        <option value="">Pilihan Penyetuju</option>
-                        <option value="1">Penyetuju Dummy</option>
+                    <label class="block text-sm font-semibold mb-1" for="penyetuju">Pilih Penyetuju Spesifik</label>
+                    <select id="penyetuju" name="penyetuju" class="w-full px-2 py-1 border border-gray-300 rounded text-sm focus:outline-none" required>
+                        <option value="">-- Pilih Penyetuju yang Akan Mengapprove --</option>
+                        @foreach($users as $user)
+                            <option value="{{ $user->id }}">{{ $user->name }} (Approver)</option>
+                        @endforeach
                     </select>
                 </div>
                 <div class="flex items-end justify-end mt-2 md:mt-0">

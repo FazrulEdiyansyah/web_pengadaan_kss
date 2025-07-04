@@ -11,7 +11,13 @@ class SpphController extends Controller
 {
     public function create()
     {
-        return view('spph.create');
+        // Hanya tampilkan vendor yang aktif
+        $vendors = \App\Models\Vendor::where('status', 'active')->get();
+        
+        // Hanya tampilkan user dengan role approver
+        $users = \App\Models\User::where('role', 'approver')->get();
+        
+        return view('spph.create', compact('vendors', 'users'));
     }
 
     public function store(Request $request)
