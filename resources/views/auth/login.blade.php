@@ -29,7 +29,7 @@
                 <label for="remember" class="text-sm text-gray-600">Remember me</label>
             </div>
             <div class="flex justify-between items-center">
-                <a href="{{ route('register') }}" class="text-sm text-blue-600 hover:underline">Dont Have Account?</a>
+                <a href="{{ route('register') }}" class="text-sm text-blue-600 hover:underline">Dont Have Account</a>
                 <button type="submit"
                     class="px-6 py-2 text-white"
                     style="background-color: #00a0d2; border-radius: 0.5rem;">
